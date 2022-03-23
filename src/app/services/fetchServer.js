@@ -1,8 +1,8 @@
 export default class fetchServer {
   //PRD
-  //static baseUrl = 'http://localhost:4000/api/';
+  static baseUrl = 'https://todo-ionic-back.herokuapp.com/api/';
   //Local
-  static baseUrl = 'http://localhost:4000/api/';
+  //static baseUrl = 'http://localhost:4000/api/';
 
   constructor() {
   }
