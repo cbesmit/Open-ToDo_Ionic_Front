@@ -1,0 +1,22 @@
+<ion-content fullscreen>
+  <ion-card>
+    <img src="assets/imgs/logo.png" />
+    <ion-card-content>
+
+      <form [formGroup]="frm" (ngSubmit)="loginForm()">
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" formControlName="usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="!frm.valid">Acceder</ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

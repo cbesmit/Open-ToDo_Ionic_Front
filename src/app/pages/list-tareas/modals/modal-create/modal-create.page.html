@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="light">
+      <ion-title>Nueva Tarea</ion-title>
+
+      <ion-buttons slot="primary">
+          <ion-button (click)="closeModal()">
+              <ion-icon slot="icon-only" ios="close-outline" md="close-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm" (ngSubmit)="onSave()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input type="text" formControlName="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de Vencimiento</ion-label>
+      <ion-input type="date" formControlName="fechaVencimiento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Detalle</ion-label>
+      <ion-textarea formControlName="detalle" rows="6" ></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="!frm.valid">Guardar</ion-button>
+
+  </form>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-item *ngIf="task" detail [class]="task.estatus == 'Completada' ? 'todo-item-complete' : ''">
+
+  <ion-checkbox *ngIf="showCheck" slot="start" [(ngModel)]="task.checked"></ion-checkbox>
+
+  <div *ngIf="!showCheck" slot="start" [class]="task.estatus != 'Completada' ? 'dot dot-unread' : 'dot'"></div>
+
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ task.titulo }}
+      <span class="date">
+        <ion-note>
+          <ion-badge color="{{task.estatus == 'Completada' ? 'light' : 'danger'}}">{{ task.estatus }}</ion-badge>
+        </ion-note>
+        <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+      </span>
+    </h2>
+    <p>{{ task.fechaVencimiento | date:'dd/MM/yyyy' }}</p>
+  </ion-label>
+</ion-item>

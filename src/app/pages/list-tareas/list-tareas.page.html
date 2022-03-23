@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="showChecks()">
+        <ion-icon *ngIf="checkAll" slot="icon-only" ios="checkbox" md="checkbox"></ion-icon>
+        <ion-icon *ngIf="!checkAll" slot="icon-only" ios="checkbox-outline" md="checkbox-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      Listado de Tareas
+    </ion-title>
+
+    <ion-buttons slot="end" *ngIf="!checkAll">
+      <ion-button (click)="onLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" *ngIf="checkAll">
+      <ion-button (click)="onDeleteChecked()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+
+  <ion-toolbar>
+    <ion-grid style="padding: 0px; margin: 0px;">
+      <ion-row style="padding: 0px; margin: 0px;">
+        <ion-col size="10" style="padding: 0px; margin: 0px;">
+          <ion-searchbar [(ngModel)]="searchTask"></ion-searchbar>
+        </ion-col>
+        <ion-col style="padding: 0px; margin: 0px;">
+          <ion-toggle [(ngModel)]="seeAll"></ion-toggle>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="padding-bottom-list">
+    <ion-list>
+      <todo-task (click)="!checkAll && showDetail(task)" *ngFor="let task of getTasks()" [task]="task" [showCheck]="checkAll"></todo-task>
+    </ion-list>
+  </div>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="!checkAll">
+    <ion-fab-button (click)="onModalNew()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar *ngIf="checkAll">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="medium" (click)="onChangeStatusChecked('Completada')">
+            Completada
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" (click)="onChangeStatusChecked('Pendiente')">
+            Pendiente
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
