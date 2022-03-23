@@ -1,2 +1,8 @@
 # Pet-ToDo_Ionic-front
-Aplicación de Tareas en Ionic Angular
+Aplicación móvil para gestión de tareas.
+
+Es el FrontEnd de la aplicación desarrollada con Ionic y Angular
+
+____________
+
+EL BackEnd de la aplicación se encuentra en el repositorio de GitHub: https://github.com/cbesmit/Pet-ToDo_Ionic-back
